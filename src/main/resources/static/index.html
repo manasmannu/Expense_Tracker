@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Expense Tracker Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Icons (for small UI touches) -->
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="app-shell">
+
+    <!-- Top Navigation -->
+    <header class="topbar">
+        <div class="topbar-left">
+            <div class="logo-circle">$</div>
+            <div>
+                <h1 class="app-title">Expense Tracker</h1>
+                <p class="app-subtitle">Simple personal finance dashboard</p>
+            </div>
+        </div>
+        <div class="topbar-right">
+            <button id="scroll-add-expense" class="btn primary btn-icon">
+                <i class="fa-solid fa-plus"></i>
+                <span>Add Expense</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="content container">
+
+        <!-- Summary cards row -->
+        <section class="summary-row">
+            <div class="summary-card">
+                <div class="summary-label">Total Spent</div>
+                <div class="summary-value">
+                    $<span id="total-amount">0.00</span>
+                </div>
+                <div class="summary-sub">In selected period</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-label">Avg Daily Spend</div>
+                <div class="summary-value">
+                    $<span id="avg-daily">0.00</span>
+                </div>
+                <div class="summary-sub">Per day</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-label">Period</div>
+                <div class="summary-value period">
+                    <span id="period-text">—</span>
+                </div>
+                <div class="summary-sub">From → To</div>
+            </div>
+        </section>
+
+        <!-- Main two-column dashboard -->
+        <section class="dashboard-grid">
+
+            <!-- LEFT COLUMN -->
+            <div class="left-column">
+
+                <!-- Add expense -->
+                <section class="card" id="add-expense-section">
+                    <div class="card-header">
+                        <h2><i class="fa-solid fa-receipt"></i> Add New Expense</h2>
+                        <span class="card-tag">Quick entry</span>
+                    </div>
+
+                    <form id="expense-form" class="form-grid">
+                        <div class="form-row">
+                            <label for="description">Description<span class="required">*</span></label>
+                            <input id="description" name="description" type="text"
+                                   required placeholder="e.g. Grocery shopping">
+                        </div>
+
+                        <div class="form-row">
+                            <label for="amount">Amount ($)<span class="required">*</span></label>
+                            <input id="amount" name="amount" type="number" step="0.01"
+                                   required placeholder="e.g. 1500.50">
+                        </div>
+
+                        <div class="form-row">
+                            <label for="category">Category<span class="required">*</span></label>
+                            <input id="category" name="category" type="text"
+                                   required placeholder="e.g. Food, Rent, Travel">
+                        </div>
+
+                        <div class="form-row">
+                            <label for="date">Date<span class="required">*</span></label>
+                            <input id="date" name="date" type="date" required>
+                        </div>
+
+                        <div class="form-row full-width">
+                            <label for="paymentMethod">Payment Method</label>
+                            <input id="paymentMethod" name="paymentMethod" type="text"
+                                   placeholder="e.g. Apple Pay, Card, Cash">
+                        </div>
+
+                        <div class="form-actions full-width">
+                            <button type="submit" class="btn primary" id="add-expense-btn">
+                                <span id="add-expense-btn-text">Add Expense</span>
+                                <span class="spinner" id="add-expense-spinner" hidden></span>
+                            </button>
+                            <span id="form-message" class="message"></span>
+                        </div>
+                    </form>
+                </section>
+
+                <!-- Filters -->
+                <section class="card" id="filters-section">
+                    <div class="card-header">
+                        <h2><i class="fa-solid fa-filter"></i> Filters</h2>
+                    </div>
+
+                    <div class="filters">
+                        <div class="form-row">
+                            <label for="filter-start-date">Start Date</label>
+                            <input id="filter-start-date" type="date">
+                        </div>
+                        <div class="form-row">
+                            <label for="filter-end-date">End Date</label>
+                            <input id="filter-end-date" type="date">
+                        </div>
+                        <div class="form-row">
+                            <label for="filter-category">Category</label>
+                            <input id="filter-category" type="text" placeholder="e.g. Food">
+                        </div>
+                    </div>
+
+                    <div class="filter-actions">
+                        <button id="apply-filters" class="btn secondary btn-icon">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <span>Apply Filters</span>
+                        </button>
+                        <button id="clear-filters" class="btn ghost">Clear</button>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- RIGHT COLUMN -->
+            <div class="right-column">
+
+                <!-- Analytics + charts -->
+                <section class="card" id="analytics-section">
+                    <div class="card-header">
+                        <h2><i class="fa-solid fa-chart-pie"></i> Analytics</h2>
+                    </div>
+
+                    <div class="charts">
+                        <div class="chart-container">
+                            <div class="chart-title">
+                                <span>Category-wise Spending</span>
+                            </div>
+                            <canvas id="categoryChart"></canvas>
+                        </div>
+                        <div class="chart-container">
+                            <div class="chart-title">
+                                <span>Daily Spend (from expenses)</span>
+                            </div>
+                            <canvas id="dailyChart"></canvas>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </section>
+
+        <!-- Expenses table full-width -->
+        <section class="card" id="expenses-section">
+            <div class="card-header space-between">
+                <h2><i class="fa-solid fa-list"></i> All Expenses</h2>
+                <span class="card-subtitle">Latest entries at the bottom</span>
+            </div>
+
+            <div class="table-wrapper">
+                <table id="expenses-table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Description</th>
+                        <th>Amount ($)</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th>Payment Method</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Filled dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

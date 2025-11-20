@@ -1,0 +1,23 @@
+# Maven build output
+/target/
+
+# H2 database files
+/data/
+*.mv.db
+*.h2.db
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE / editor configs
+.idea/
+*.iml
+.vscode/
+.project
+.classpath
+.settings/
+
+# Logs
+*.log
+logs/
