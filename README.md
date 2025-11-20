@@ -32,7 +32,7 @@ No external database is required – the app uses H2 and stores data in the loca
 
 1. Clone the repository
 ```bash
-git clone <YOUR_REPO_URL>.git
+git clone https://github.com/manasmannu/Expense_Tracker.git
 cd expense-tracker
 ```
 2. Build the project
@@ -90,7 +90,8 @@ Filter expenses
 	3.	Dashboard, charts, and table will update for that range.
 	4.	Click Clear to reset filters.
 
-📡 API Endpoints (for Postman / curl)
+
+📡 You can run the below commands to test the API Endpoints (for Postman / curl)
 
 The backend exposes REST APIs under /api.
 
