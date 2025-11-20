@@ -112,14 +112,14 @@ You’ll see:
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/ef99ff9c-ed8e-4bb2-868f-934fded9c545" 
-       alt="Demo" width="75%">
+       alt="Demo" width="85%">
 </p>
 
 
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/45f9429c-115e-457e-adeb-8befae8954d8" 
-       alt="Demo" width="75%">
+       alt="Demo" width="85%">
 </p>
 
 
