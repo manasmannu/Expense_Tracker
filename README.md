@@ -70,57 +70,68 @@ http://localhost:8080/index.html
 ```
 
 You’ll see:
-	•	Top summary cards → total spent, average daily spend, selected period
-	•	Add New Expense form
-	•	Filters by date range + category
-	•	Charts
-	•	Category-wise spending (pie)
-	•	Daily spend (bar)
-	•	Table of all expenses
+•	Top summary cards → total spent, average daily spend, selected period
+•	Add New Expense form
+•	Filters by date range + category
+•	Charts
+•	Category-wise spending (pie)
+•	Daily spend (bar)
+•	Table of all expenses
 
-Add an expense
-	1.	Fill in:
-	•	Description (e.g. Grocery shopping)
-	•	Amount (₹)
-	•	Category (e.g. Food / Rent / Travel)
-	•	Date
-	•	Optional: Payment method (UPI / Card / Cash)
-	2.	Click “Add Expense”
-	3.	The table and charts will refresh with the new data.
+### Add an expense
+1.	Fill in:
+•	Description (e.g. Grocery shopping)
+•	Amount (₹)
+•	Category (e.g. Food / Rent / Travel)
+•	Date
+•	Optional: Payment method (UPI / Card / Cash)
+2.	Click “Add Expense”
+3.	The table and charts will refresh with the new data.
 
-Filter expenses
-	1.	Set Start Date, End Date, and/or Category
-	2.	Click Apply Filters
-	3.	Dashboard, charts, and table will update for that range.
-	4.	Click Clear to reset filters.
+### Filter expenses
+1.	Set Start Date, End Date, and/or Category
+2.	Click Apply Filters
+3.	Dashboard, charts, and table will update for that range.
+4.	Click Clear to reset filters.
 
 ### Demo Screenshot
+
 <p align="center">
   <img src="https://github.com/user-attachments/assets/193312d8-4039-4265-a9c7-5b9920916196" 
        alt="Demo" width="45%">
 </p>
+
+
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/2238daa6-2afb-41bb-84d9-3985983e5656" 
        alt="Demo" width="45%">
 </p>
 
+
+
 <p align="center">
   <img src="https://github.com/user-attachments/assets/ef99ff9c-ed8e-4bb2-868f-934fded9c545" 
-       alt="Demo" width="65%">
+       alt="Demo" width="75%">
 </p>
+
+
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/45f9429c-115e-457e-adeb-8befae8954d8" 
-       alt="Demo" width="65%">
+       alt="Demo" width="75%">
 </p>
+
+
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/d52a81ef-b688-4e89-b33e-b704bd0dcd11" 
-       alt="Demo" width="45%">
+       alt="Demo" width="50%">
 </p>
 
-# Thank you--------------------------
+
+
+# --- Finish ---
 
 ### Additional API Endpoints debugging
 ### 📡 You can run the below commands to test the API Endpoints (for Postman / curl)
@@ -162,6 +173,7 @@ GET /api/expenses/{id}
 PUT /api/expenses/{id}
 Content-Type: application/json
 ```
+
 <p align="center">
   <img src="https://github.com/user-attachments/assets/98eb50c4-b42f-4702-8bb2-be3074458d66" 
        alt="Demo" width="45%">
@@ -198,7 +210,7 @@ Sample response:
        alt="Demo" width="45%">
 </p>
 
-🛠 DevTools (Auto-Reload During Development)
+### 🛠 DevTools (Auto-Reload During Development)
 
 This project includes Spring Boot DevTools.
 
@@ -212,7 +224,7 @@ mvn spring-boot:run
 
 For best experience, enable Auto Save in your editor (VS Code: File → Auto Save).
 
-🧪 H2 Database Console (Optional)
+# H2 Database Console (Optional)
 
 You can view the H2 database in the browser.
 ### 1.	Start the app.
