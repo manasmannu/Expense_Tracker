@@ -1,4 +1,4 @@
-# Expense Tracker Dashboard (Java + Spring Boot)
+# Expense Tracker Dashboard
 
 A simple **expense tracking and analytics dashboard** built with:
 
